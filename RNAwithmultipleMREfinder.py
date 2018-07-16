@@ -18,7 +18,7 @@ while a!='':
     aa=a.split('\t')
     cerna=aa[0]
     mirna=aa[1]
-    for i in list_mirna: #sprawdzanie listy mirna potencjalnie wiazacych sie do danego ciagu powtorzen
+    for i in list_mirna:
         if i in mirna: #if miRNA is on the list
             poz=int(aa[3]) #MRE position
             for j in poz_list:
