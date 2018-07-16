@@ -1,6 +1,6 @@
 #raceRNA
 f1=open((input('TargetScan result file name:')),'r')
-f3=open((input('File name of file with miRNA names: miR-[number] format (eg. miR-940), each miRNA in separate line:')),'r')
+f3=open((input('Name of file with miRNA names: miR-[number] format (eg. miR-940), each miRNA in separate line:')),'r')
 zm=int(input('Min. MRE number in RNA sequence:'))
 file_out=str(input('Name of results file:'))
 counting=0
