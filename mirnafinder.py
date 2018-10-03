@@ -34,6 +34,7 @@ d={}
 for i in range(0,unit_length): #frame dictionary generator
     d["frame{0}".format(i)]=word[i:-(unit_length-i)]
 
+exist=False
 ile=1
 for i in a:
     if ile%2==1: #sequence header
@@ -41,10 +42,16 @@ for i in a:
         name=ii[0].strip('\n')
     else: #sequence row
         for j in list(d.values()): #extracting all possible variants of the SSR motif
-            seed=i[1:8] #extracting seed sequence (nucleotides poistion 2-8)
+            seed=i[1:8] #extracting seed sequence (nucleotides position 2-7)
             if j in seed:
                 f2=open(file_out,'a')
                 f2.write(name+'\n'+i)
                 f2.close()
+                exist=True
                 break
     ile+=1
+
+if exist==False: #if no miRNAs with matches were found generate a file reporting no matches
+    f2=open(file_out,'a')
+    f2.write('No matches between miRNA sequences and the chosen repeat were found')
+    f2.close()
