@@ -12,6 +12,7 @@ d={}
 for i in range(0,unit_length): #frame dictionary generator
     d["frame{0}".format(i)]=word[i:-(unit_length-i)]
 
+exist=False
 ile=1
 for i in a:
     if ile%2==1: #sequence header
@@ -20,8 +21,14 @@ for i in a:
     else: #sequence row
         for j in list(d.values()): #extracting all possible variants of the SSR motif
             if j in i:
+                exist=True
                 f2=open(file_out,'a')
                 f2.write(name+'\n'+i)
                 f2.close()
                 break
     ile+=1
+
+if exist==False: #if none of examined RNA sequences contain SSRs, report it
+    f2=open(file_out,'a')
+    f2.write('None of examined RNA sequences contain examined SSR tracts')
+    f2.close()
